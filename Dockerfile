@@ -2,7 +2,7 @@
 FROM ruby:2.2.3-slim
 
 # Optionally set a maintainer name to let people know who made this image.
-MAINTAINER Nick Janetakis <nick.janetakis@gmail.com>
+MAINTAINER Sugata Acharjya <sugata.a@gmail.com>
 
 # Install dependencies:
 # - build-essential: To ensure certain gems can be compiled
@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -qq -y build-essential nodejs libpq-dev po
 
 # Set an environment variable to store where the app is installed to inside
 # of the Docker image.
-ENV INSTALL_PATH /drkiq
+ENV INSTALL_PATH /rails-docker
 RUN mkdir -p $INSTALL_PATH
 
 # This sets the context of where commands will be ran in and is documented
