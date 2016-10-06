@@ -1,0 +1,39 @@
+postgres:
+  image: postgres:9.4.5
+  environment:
+    POSTGRES_USER: sugata
+    POSTGRES_PASSWORD: sugata
+  ports:
+    - '5432:5432'
+  volumes:
+    - rails-docker-postgres:/var/lib/postgresql/data
+
+redis:
+  image: redis:3.0.5
+  ports:
+    - '6379:6379'
+  volumes:
+    - rails-docker-redis:/var/lib/redis/data
+
+rails-docker:
+  build: .
+  links:
+    - postgres
+    - redis
+  volumes:
+    - .:/rails-docker
+  ports:
+    - '8000:8000'
+  env_file:
+    - .rails-docker.env
+
+sidekiq:
+  build: .
+  command: bundle exec sidekiq -C config/sidekiq.yml
+  links:
+    - postgres
+    - redis
+  volumes:
+    - .:/rails-docker
+  env_file:
+    - .rails-docker.env

@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,3 +43,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'unicorn', '~> 4.9'
+gem 'pg', '~> 0.18.3'
+gem 'sidekiq', '~> 4.0.1'
+gem 'redis-rails', '~> 4.0.0'
